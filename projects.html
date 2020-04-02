@@ -1,0 +1,22 @@
+---
+layout: default
+title: Work & Projects
+---
+
+{% assign projects = (site.projects | sort: 'date') | reverse %}
+{% assign projectsByYear = projects | group_by_exp: "project", "project.date | date: '%Y'" %} 
+
+<ul class="projects grid-list">
+  {% for year in projectsByYear %}
+    <li class="grid-year">
+      <h3>{{ year.name }}</h3>
+    </li>
+    
+    {% for project in year.items  %}
+      <li class="grid-tag">
+        <span class="tag {{ project.category }}">{{ project.category }}</span>
+      </li>  
+      {% include project_li.html project=project %}
+    {% endfor %}
+  {% endfor %}
+</ul>

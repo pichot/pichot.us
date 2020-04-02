@@ -1,0 +1,12 @@
+{% assign post = include.post %}
+
+<li>
+  <a href="{% if post.canonical_only %}{{ post.canonical_url }}{% else %}{{ post.url }}{% endif %}">
+    <h1>{{ post.title }}</h1>
+    {% if post.subtitle %}<h2>{{ post.subtitle }}</h2>{% endif %}
+    <div class="post-date">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time> 
+      {% if post.canonical_only %} • in <em>{{ post.canonical_source }}</em> {% endif %}
+    </div>
+  </a>
+</li>

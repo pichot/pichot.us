@@ -1,0 +1,61 @@
+.posts {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: 1.5rem;
+  }
+
+  li:hover h1 {
+    color: $logo-pink;
+  }
+
+  a:hover {
+    text-decoration: none;    
+  }
+
+  h1, h2 {
+    color: $title-gray;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    color: $gray-5;
+    line-height: 1.2rem;
+    margin: 0 0 .2rem 0;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    color: $gray-4;
+    font-weight: 300;
+    line-height: 1rem;
+    margin-top: .4rem;
+    margin-bottom: .2rem;
+  }
+
+  .post-date,
+  h3 {
+    font-size: 0.8rem;
+    margin: 0;
+    display: block;
+    color: $date-gray;
+  }
+}
+
+.grid-list {
+  list-style: none;
+  padding: 0;
+  line-height: 1.7;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  li {
+    grid-column: 1 / 2;
+  }
+
+  li:not(.grid-year) {
+    grid-column: 2 / -1;
+  }
+}

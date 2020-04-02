@@ -1,0 +1,19 @@
+{% assign project = include.project %}
+
+<li class="grid-project">
+  <a href="{{ project.url }}">    
+    {% if project.event %}
+      <h1>{{ project.event }}</h1>
+      <h2>{{ project.title }}{% if project.subtitle %}:{% endif %}</h2>
+      {% if project.subtitle %}<h2>{{ project.subtitle }}</h2>{% endif %}
+    {% else %}
+      <h1>{{ project.title }}</h1>
+      {% if project.subtitle %}<h2>{{ project.subtitle }}</h2>{% endif %}
+    {% endif %}
+    
+    <div class="post-date">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ project.date | date_to_string }}</time> 
+      {% if project.organization %} • {{ project.organization }}{% endif %}
+    </div>
+  </a>
+</li>

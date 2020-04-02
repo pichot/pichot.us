@@ -1,0 +1,18 @@
+---
+layout: default
+title: Writing
+---
+
+{% assign postsByYear = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+<ul class="posts grid-list">
+  {% for year in postsByYear %}
+    <li class="grid-year">
+      <h3>{{ year.name }}</h3>
+    </li>
+    
+    {% for post in year.items  %}
+      {% include post_li.html post=post %}
+    {% endfor %}
+  {% endfor %}
+</ul>
