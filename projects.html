@@ -3,7 +3,7 @@ layout: default
 title: Work & Projects
 ---
 
-{% assign projects = (site.projects | sort: 'date') | reverse %}
+{% assign projects = site.projects | sort: 'date' | reverse %}
 {% assign projectsByYear = projects | group_by_exp: "project", "project.date | date: '%Y'" %} 
 
 <ul class="projects grid-list">

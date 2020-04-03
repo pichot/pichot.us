@@ -45,7 +45,7 @@ Let’s continue with our air traffic metaphor.
 
 [Air France flight 11](https://flightaware.com/live/flight/AFR11) between New York and Paris is a flight route defined by Air France. It is, in essence, a sequence of tasks that gets an airplane from JFK to CDG. Air France defines how often this sequence should be run. In the case of AF11, it’s run daily.
 
-<img src="{{ site.baseurl }}/assets/images/airflow1.png" caption="A flight route made up of waypoints.">
+<img src="{% link assets/images/airflow1.png %}" caption="A flight route made up of waypoints.">
 
 A flight route is made up of many different tasks: taxiing to a runway, taking off, raising the landing gear, navigating to [waypoints](https://www.cntraveler.com/stories/2015-06-02/a-pilot-explains-waypoints-the-hidden-geography-of-the-sky), etc. Some of these tasks can be run in parallel, some in sequence, and some depend on others before happening.
 
@@ -57,7 +57,7 @@ To recap: a **DAG** is made up of **Operators**, and together they form the blue
 
 So what happens when a **DAG** is executed? It becomes a **DAG Run**.
 
-<img src="{{ site.baseurl }}/assets/images/airflow2.png" caption="AF11 on September 25, 2017. A successful DAG Run.">
+<img src="{% link assets/images/airflow2.png %}" caption="AF11 on September 25, 2017. A successful DAG Run.">
 
 A **DAG Run** is what Airflow calls an executed instance of a **DAG**. Airflow triggers this execution based on the schedule defined in the **DAG** (hourly, daily, weekly, etc.). Once triggered, Airflow orchestrates the execution of the **Operators** in the correct order, assigning available computing power to any outstanding tasks that need to be completed.
 
@@ -65,7 +65,7 @@ Airflow calls an executed **Operator** a **Task Instance**. (This is an example 
 
 Returning to our air traffic controller metaphor, [Air France Flight 11 on Monday, September 25, 2017](https://flightaware.com/live/flight/AFR11/history/20170926/0150Z/KJFK/LFPG) took off at 10:05pm EDT and landed in Paris the next day. This flight followed a sequence of operations defined by the airline to get a plane from JFK to CDG. AF11 on Sept 25 is the **DAG Run** to the daily AF11 flight route’s **DAG**.
 
-<img src="{{ site.baseurl }}/assets/images/airflow3.png" caption="Four core Airflow concepts.">
+<img src="{% link assets/images/airflow3.png %}" caption="Four core Airflow concepts.">
 
 Recap
 -----
