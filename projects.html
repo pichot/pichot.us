@@ -6,6 +6,10 @@ title: Work & Projects
 {% assign projects = site.projects | sort: 'date' | reverse %}
 {% assign projectsByYear = projects | group_by_exp: "project", "project.date | date: '%Y'" %} 
 
+<div class="message">
+  List of projects is incomplete.
+</div>
+
 <ul class="projects grid-list">
   {% for year in projectsByYear %}
     <li class="grid-year">
