@@ -1,0 +1,17 @@
+autoInstallPeers: true
+
+onlyBuiltDependencies:
+  - '-'
+  - '3'
+  - '@parcel/watcher'
+  - b
+  - better-sqlite3
+  - e
+  - esbuild
+  - i
+  - l
+  - q
+  - r
+  - s
+  - t
+  - unrs-resolver
