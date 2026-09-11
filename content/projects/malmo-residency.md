@@ -7,9 +7,7 @@ category: residency
 
 In the fall of 2023 I spent a month in Malmö, Sweden, as one of three residents in the first edition of the [Malmö Residency](https://www.malmoresidency.com/), hosted by [Media Evolution](https://www.mediaevolution.se/engage/Competence-attraction) and its partners. 649 people from 74 countries applied. I was joined by Sami Angsthelm from Barcelona and Freya Pratty from London.
 
-The residency offers a month away from home to focus on a project, meet new people, and see your own city from a new angle. I worked on a project I'd been brewing for a while, inspired by Our World in Data and Gapminder's *Factfulness*, but focused on cities. I spent most of the month meeting the people who plan, build, and run Malmö.
-
-![Presenting the DTPR taxonomy in Malmö.](/images/malmo-talk.jpg)
+The residency offers a month away from home to focus on a project, meet new people, and see your own city from a new angle. I used the month to start work on [The Urban World](https://theurban.world/), an observatory of urban complexity that tells the story of global urbanization through data, inspired by Our World in Data and Gapminder's *Factfulness*. I didn't finish it in Malmö, but it's now released. I spent most of the month meeting the people who plan, build, and run Malmö, and I gave a talk on technology in the public realm at [Coding Cities](/projects/coding-cities/).
 
 ### Press
 
