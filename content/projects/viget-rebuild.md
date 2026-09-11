@@ -1,6 +1,7 @@
 ---
 title: "Viget.org rebuild"
 date: "2012-11-01"
+description: "A community wiki for Grand Rapids"
 category: project
 organization: "Friendly Code, a Code for America Brigade"
 ---

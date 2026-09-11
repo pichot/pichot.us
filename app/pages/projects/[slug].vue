@@ -25,42 +25,40 @@ function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
   })
 }
 
-const categoryColors: Record<string, string> = {
-  talk: 'bg-blue text-white',
-  project: 'bg-green text-white',
-  org: 'bg-orange text-white',
-}
+const byline = computed(() =>
+  [project.value?.organization, formatDate(project.value!.date)]
+    .filter(Boolean)
+    .join(' · ')
+)
 </script>
 
 <template>
-  <article v-if="project" class="prose dark:prose-dark max-w-none">
-    <header class="mb-8">
-      <div class="flex items-center gap-3 mb-2">
-        <span
-          v-if="project.category"
-          class="text-xs px-2 py-1 rounded"
-          :class="categoryColors[project.category] || 'bg-gray-200 text-gray-700'"
-        >
-          {{ project.category }}
-        </span>
-      </div>
-      <h1 class="text-3xl font-bold mb-2">
-        {{ project.title }}
-      </h1>
-      <p v-if="project.organization || project.event" class="text-gray-500 dark:text-gray-400">
-        <span v-if="project.organization">{{ project.organization }}</span>
-        <span v-if="project.organization && project.event"> &bull; </span>
-        <span v-if="project.event">{{ project.event }}</span>
-      </p>
-      <time class="text-sm text-gray-400 dark:text-gray-500">
-        {{ formatDate(project.date) }}
-      </time>
-    </header>
+  <article v-if="project">
+    <BackLink />
 
-    <ContentRenderer :value="project" />
+    <div v-if="project.category" class="mb-3">
+      <span class="chip" :class="categoryChip[project.category]">
+        {{ categoryLabel[project.category] ?? project.category }}
+      </span>
+    </div>
+
+    <h1 class="mb-2 text-3xl font-semibold leading-snug tracking-tight text-balance">
+      {{ project.title }}
+    </h1>
+
+    <p v-if="project.event || project.description" class="mb-3 text-muted">
+      {{ project.event || project.description }}
+    </p>
+
+    <p class="mb-10 font-mono text-xs tracking-wide text-subtle">
+      {{ byline }}
+    </p>
+
+    <div class="article">
+      <ContentRenderer :value="project" />
+    </div>
   </article>
 </template>

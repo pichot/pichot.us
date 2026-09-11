@@ -2,68 +2,346 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
+/* ==========================================================================
+   Design tokens — warm paper & ink, bronze accent.
+   Serif (Spectral) for committed content: names, prose, titles.
+   Mono (IBM Plex Mono) for operational text: chips, dates, labels, nav.
+   ========================================================================== */
+:root {
+  /* ground */
+  --color-canvas: #f6f3ee;
+  --color-surface: #efebe2;
+  --color-ink: #1d1a15;
+  --color-muted: #585249;
+  --color-subtle: #6e695b;
+  --color-edge: #e1dccf;
+  --color-edge-strong: #c7c0ae;
+
+  /* figure — polished bronze, used sparingly */
+  --color-figure: #9a661f;
+  --color-figure-hover: #855818;
+
+  /* JP mark — ink-blue letters over a bronze bar */
+  --color-mark: #1b3f5e;
+  --color-mark-bar: #9a5b12;
+
+  /* category chips */
+  --color-talk: #50707e;
+  --color-talk-tint: #e2e9ec;
+  --color-project: #5d7a5f;
+  --color-project-tint: #e7ece2;
+  --color-org: #927b35;
+  --color-org-tint: #efe9d6;
+  --color-teach: #8a5a4f;
+  --color-teach-tint: #f0e4df;
+  --color-residency: #6e5a86;
+  --color-residency-tint: #e9e4ef;
+
+  /* utility */
+  --color-focus: #50707e;
+  --color-selection: rgba(154, 102, 31, 0.2);
+}
+
+.dark {
+  --color-canvas: #15130e;
+  --color-surface: #211d16;
+  --color-ink: #ece7da;
+  --color-muted: #a8a18f;
+  --color-subtle: #888270;
+  --color-edge: #332e24;
+  --color-edge-strong: #4b4536;
+
+  --color-figure: #cb9a4f;
+  --color-figure-hover: #ddab5f;
+
+  --color-mark: #6a9fc4;
+  --color-mark-bar: #c98a35;
+
+  --color-talk: #7c9aa8;
+  --color-talk-tint: #16222a;
+  --color-project: #7f9a80;
+  --color-project-tint: #1d251c;
+  --color-org: #bb9e58;
+  --color-org-tint: #262112;
+  --color-teach: #c08b7e;
+  --color-teach-tint: #2a1c18;
+  --color-residency: #a592bd;
+  --color-residency-tint: #211c29;
+
+  --color-focus: #7c9aa8;
+  --color-selection: rgba(203, 154, 79, 0.26);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
 @layer base {
   html {
-    @apply text-gray-600 bg-white antialiased;
+    color-scheme: light;
+    @apply antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   html.dark {
-    @apply text-gray-200 bg-gray-700;
+    color-scheme: dark;
   }
 
   body {
-    @apply font-sans text-base leading-normal;
+    @apply bg-canvas font-serif text-ink;
+    font-size: 1.2rem;
+    line-height: 1.62;
   }
 
-  a {
-    @apply text-blue hover:underline;
+  ::selection {
+    background: var(--color-selection);
   }
 
-  .dark a {
-    @apply text-cyan;
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: 0.125rem;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-gray-800 leading-tight;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    @apply text-gray-100;
-  }
-
-  code {
-    @apply font-mono text-code text-sm;
-  }
-
-  .dark code {
-    @apply text-yellow;
-  }
-
-  pre {
-    @apply overflow-x-auto p-4 rounded bg-gray-100;
-  }
-
-  .dark pre {
-    @apply bg-gray-800;
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
-/* Component styles */
+/* ==========================================================================
+   Components
+   ========================================================================== */
 @layer components {
-  .container {
-    @apply max-w-2xl mx-auto px-4;
+  /* hairline links — serif body links */
+  .link-serif {
+    @apply text-ink;
+    text-decoration: underline 1px var(--color-edge-strong);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  .link-serif:hover {
+    text-decoration-color: var(--color-ink);
   }
 
-  .masthead {
-    @apply py-6 mb-8;
+  /* hairline links — mono operational links (nav, back, bylines) */
+  .link-mono {
+    @apply font-mono text-muted;
+    font-size: 0.85rem;
+    text-decoration: underline 1px var(--color-edge);
+    text-underline-offset: 0.18em;
+    transition: color 120ms cubic-bezier(0.3, 0.7, 0.3, 1),
+      text-decoration-color 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  .link-mono:hover {
+    @apply text-ink;
+    text-decoration-color: var(--color-ink);
   }
 
-  .masthead-title {
-    @apply text-xl font-bold m-0;
+  /* category chips — mono, uppercase, machined */
+  .chip {
+    @apply font-mono uppercase;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 0.25rem 0.45rem 0.2rem;
+    border-radius: 0.125rem;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    flex: none;
+  }
+  .chip-talk {
+    color: var(--color-talk);
+    background: var(--color-talk-tint);
+  }
+  .chip-project {
+    color: var(--color-project);
+    background: var(--color-project-tint);
+  }
+  .chip-org {
+    color: var(--color-org);
+    background: var(--color-org-tint);
+  }
+  .chip-teach {
+    color: var(--color-teach);
+    background: var(--color-teach-tint);
+  }
+  .chip-residency {
+    color: var(--color-residency);
+    background: var(--color-residency-tint);
+  }
+  /* filter row: neutral "All" chip, unselected chips fade back */
+  .chip-all {
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border-color: var(--color-edge);
+  }
+  button.chip {
+    cursor: pointer;
+    transition: opacity 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  .chip-off {
+    opacity: 0.6;
+  }
+  .chip-off:hover {
+    opacity: 1;
   }
 
-  .nav-list {
-    @apply flex gap-4 list-none p-0 m-0;
+  /* work list — name (serif) · description (serif, muted) · chip (mono).
+     The text block wraps internally; the chip is a sibling flex item so it
+     stays pinned to the right edge even when the text spans several lines. */
+  .work {
+    @apply list-none;
   }
+  .work li {
+    @apply flex items-baseline gap-x-3;
+    margin-bottom: 0.6rem;
+  }
+  .work-text {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .work-name {
+    @apply font-medium text-ink no-underline;
+    font-size: 1.05rem;
+  }
+  a.work-name {
+    text-decoration: underline 1px var(--color-edge-strong);
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  a.work-name:hover {
+    text-decoration-color: var(--color-ink);
+  }
+  .work-desc {
+    @apply block text-muted;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==========================================================================
+   Article prose — styles rendered markdown (ContentRenderer) and the
+   hand-written About essay. Descendant selectors are required here because
+   the markup comes from @nuxt/content, not from templates we control.
+   ========================================================================== */
+.article {
+  @apply text-ink;
+  font-size: 1.2rem;
+  line-height: 1.62;
+}
+.article p {
+  margin-bottom: 1.25rem;
+  text-wrap: pretty;
+}
+.article h2,
+.article h3,
+.article h4 {
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+.article h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.article h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+/* @nuxt/content wraps heading text in anchor links — keep them looking
+   like headings, not body links */
+.article h2 a,
+.article h3 a,
+.article h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+/* h4 breaks from the serif scale: a small mono label, like the chips */
+.article h4 {
+  @apply font-mono uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+/* no dead air above a heading that opens the article or follows another
+   (ContentRenderer nests the markdown in a wrapper, hence :first-child on
+   the headings themselves rather than on .article's direct children) */
+.article :is(h2, h3, h4):first-child {
+  margin-top: 0;
+}
+.article h2 + h3,
+.article h3 + h4 {
+  margin-top: 0.5rem;
+}
+.article ul,
+.article ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.article ul {
+  list-style: disc;
+}
+.article ol {
+  list-style: decimal;
+}
+.article li {
+  margin-bottom: 0.4rem;
+}
+.article blockquote {
+  border-left: 2px solid var(--color-edge-strong);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.article hr {
+  border: none;
+  border-top: 1px solid var(--color-edge);
+  margin: 2rem 0;
+}
+.article a {
+  color: var(--color-ink);
+  text-decoration: underline 1px var(--color-edge-strong);
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+}
+.article a:hover {
+  text-decoration-color: var(--color-ink);
+}
+.article strong {
+  font-weight: 600;
+}
+.article code,
+.article pre,
+.article kbd {
+  @apply font-mono;
+  font-size: 0.85em;
+}
+.article pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-edge);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+.article img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+}
+.article iframe {
+  max-width: 100%;
+}
+.article abbr {
+  text-decoration-color: var(--color-edge-strong);
 }

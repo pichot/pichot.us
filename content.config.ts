@@ -8,6 +8,8 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         date: z.string(),
+        description: z.string().optional(),
+        externalUrl: z.string().optional(),
         layout: z.string().optional(),
       }),
     }),
@@ -17,6 +19,7 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string(),
         date: z.string(),
+        description: z.string().optional(),
         category: z.string().optional(),
         event: z.string().optional(),
         organization: z.string().optional(),

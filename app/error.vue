@@ -16,19 +16,16 @@ function handleError() {
 </script>
 
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-white dark:bg-gray-700">
+  <div class="flex min-h-screen items-center justify-center bg-canvas font-serif text-ink">
     <div class="text-center">
-      <h1 class="text-6xl font-bold text-gray-300 dark:text-gray-600 mb-4">
+      <p class="mb-4 font-mono text-5xl text-edge-strong">
         {{ error.statusCode }}
-      </h1>
-      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
+      </p>
+      <p class="mb-8 text-muted">
         {{ error.statusMessage || 'An error occurred' }}
       </p>
-      <button
-        class="px-6 py-2 bg-blue text-white rounded hover:bg-blue-logo transition-colors"
-        @click="handleError"
-      >
-        Go back home
+      <button class="link-mono" @click="handleError">
+        &larr; Jonathan Pichot
       </button>
     </div>
   </div>

@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // main + assets are filled in by Nitro at build time (nitro.cloudflare.deployConfig)
+  "name": "pichot-us",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "pichot.us", "custom_domain": true },
+    { "pattern": "www.pichot.us", "custom_domain": true }
+  ],
+  "d1_databases": [
+    {
+      // @nuxt/content stores its content index here
+      "binding": "DB",
+      "database_name": "pichot-us-content",
+      "database_id": "9a0fcb51-1086-4731-bdfb-f4f9d9d14d19"
+    }
+  ]
+}

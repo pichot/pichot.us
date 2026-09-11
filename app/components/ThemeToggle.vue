@@ -17,7 +17,7 @@ function toggle() {
   <button
     type="button"
     :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-    class="p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+    class="p-2 text-subtle transition-colors hover:text-ink"
     @click="toggle"
   >
     <svg
