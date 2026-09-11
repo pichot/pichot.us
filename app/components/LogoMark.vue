@@ -1,5 +1,5 @@
-<!-- JP mark: Optician Sans outlines (the old site's logo font) over a bronze bar.
-     Colors come from --color-mark / --color-figure so it follows light/dark. -->
+<!-- JP mark: Optician Sans outlines (the old site's logo font) over a copper bar.
+     Colors come from --color-mark / --color-mark-bar so it follows light/dark. -->
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -18,5 +18,5 @@
 <style scoped>
 /* SVG fills can't take Tailwind color utilities per-path without extra markup */
 .jp-letters { fill: var(--color-mark); }
-.jp-bar { fill: var(--color-figure); }
+.jp-bar { fill: var(--color-mark-bar); }
 </style>

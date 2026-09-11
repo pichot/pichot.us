@@ -21,8 +21,9 @@
   --color-figure: #9a661f;
   --color-figure-hover: #855818;
 
-  /* JP mark letters — deep slate, paired with the bronze bar */
-  --color-mark: #2f5566;
+  /* JP mark — petrol letters over a copper bar */
+  --color-mark: #174c63;
+  --color-mark-bar: #a85a14;
 
   /* category chips */
   --color-talk: #50707e;
@@ -53,7 +54,8 @@
   --color-figure: #cb9a4f;
   --color-figure-hover: #ddab5f;
 
-  --color-mark: #a3bfcc;
+  --color-mark: #5b9bb8;
+  --color-mark-bar: #d4893a;
 
   --color-talk: #7c9aa8;
   --color-talk-tint: #16222a;
