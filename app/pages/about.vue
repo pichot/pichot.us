@@ -75,7 +75,8 @@ useHead({
       </p>
       <p>
         I care deeply about cities and communities. I've founded and run volunteer groups, I've been a neighborhood block captain,
-        and I've studied cities through data.
+        and I've studied cities through data at
+        <a href="https://engineering.nyu.edu/research/centers/cusp" target="_blank" rel="noopener noreferrer">NYU CUSP</a>.
         <a href="https://www.ted.com/talks/taiye_selasi_don_t_ask_where_i_m_from_ask_where_i_m_a_local" target="_blank" rel="noopener noreferrer">I consider myself a local</a>
         of Paris and Grand Rapids.
       </p>
