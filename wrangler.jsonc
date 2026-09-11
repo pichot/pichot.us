@@ -5,6 +5,12 @@
   "compatibility_date": "2026-09-01",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "pichot.us", "custom_domain": true },
+    { "pattern": "www.pichot.us", "custom_domain": true }
+  ],
   "d1_databases": [
     {
       // @nuxt/content stores its content index here
