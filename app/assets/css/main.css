@@ -30,6 +30,8 @@
   --color-org-tint: #efe9d6;
   --color-teach: #8a5a4f;
   --color-teach-tint: #f0e4df;
+  --color-residency: #6e5a86;
+  --color-residency-tint: #e9e4ef;
 
   /* utility */
   --color-focus: #50707e;
@@ -56,6 +58,8 @@
   --color-org-tint: #262112;
   --color-teach: #c08b7e;
   --color-teach-tint: #2a1c18;
+  --color-residency: #a592bd;
+  --color-residency-tint: #211c29;
 
   --color-focus: #7c9aa8;
   --color-selection: rgba(203, 154, 79, 0.26);
@@ -153,6 +157,10 @@
   .chip-teach {
     color: var(--color-teach);
     background: var(--color-teach-tint);
+  }
+  .chip-residency {
+    color: var(--color-residency);
+    background: var(--color-residency-tint);
   }
 
   /* work list — name (serif) · description (serif, muted) · chip (mono).

@@ -17,6 +17,7 @@ export const categoryChip: Record<string, string> = {
   project: 'chip-project',
   org: 'chip-org',
   teaching: 'chip-teach',
+  residency: 'chip-residency',
 }
 
 export const categoryLabel: Record<string, string> = {
@@ -24,4 +25,5 @@ export const categoryLabel: Record<string, string> = {
   project: 'Project',
   org: 'Org',
   teaching: 'Teaching',
+  residency: 'Residency',
 }
