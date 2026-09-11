@@ -12,6 +12,29 @@ const roles = [
 const { data: works } = await useAsyncData('works', () =>
   queryCollection('projects').order('date', 'DESC').all()
 )
+
+const RECENT = 10
+const route = useRoute()
+const router = useRouter()
+const showAll = ref(false)
+
+// Filter lives in the URL (?type=talk) so a filtered view can be shared
+const filter = computed(() => route.query.type as string | undefined)
+const categories = computed(() =>
+  Object.keys(categoryLabel).filter(c => works.value?.some(w => w.category === c))
+)
+const filtered = computed(() =>
+  (works.value ?? []).filter(w => !filter.value || w.category === filter.value)
+)
+// A filtered list is short enough to show whole; the full list starts at the most recent
+const canExpand = computed(() => !filter.value && filtered.value.length > RECENT)
+const visible = computed(() =>
+  canExpand.value && !showAll.value ? filtered.value.slice(0, RECENT) : filtered.value
+)
+
+function setFilter(type?: string) {
+  router.replace({ query: type ? { type } : {} })
+}
 </script>
 
 <template>
@@ -41,8 +64,31 @@ const { data: works } = await useAsyncData('works', () =>
       </ul>
     </section>
 
-    <ul class="work mb-12">
-      <li v-for="work in works" :key="work.stem">
+    <div class="mb-6 flex flex-wrap gap-2" role="group" aria-label="Filter by type">
+      <button
+        type="button"
+        class="chip chip-all"
+        :class="{ 'chip-off': filter }"
+        :aria-pressed="!filter"
+        @click="setFilter()"
+      >
+        All
+      </button>
+      <button
+        v-for="c in categories"
+        :key="c"
+        type="button"
+        class="chip"
+        :class="[categoryChip[c], { 'chip-off': filter !== c }]"
+        :aria-pressed="filter === c"
+        @click="setFilter(filter === c ? undefined : c)"
+      >
+        {{ categoryLabel[c] }}
+      </button>
+    </div>
+
+    <ul class="work" :class="canExpand ? 'mb-4' : 'mb-12'">
+      <li v-for="work in visible" :key="work.stem">
         <span class="work-text">
           <NuxtLink :to="projectPath(work.stem)" class="work-name">
             {{ work.title }}
@@ -60,6 +106,16 @@ const { data: works } = await useAsyncData('works', () =>
         </span>
       </li>
     </ul>
+
+    <button
+      v-if="canExpand"
+      type="button"
+      class="link-mono mb-12"
+      :aria-expanded="showAll"
+      @click="showAll = !showAll"
+    >
+      {{ showAll ? 'Show recent only' : `Show all ${filtered.length}` }}
+    </button>
 
     <nav class="flex flex-wrap gap-5">
       <NuxtLink to="/about" class="link-mono">About</NuxtLink>

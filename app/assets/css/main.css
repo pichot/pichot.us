@@ -162,6 +162,22 @@
     color: var(--color-residency);
     background: var(--color-residency-tint);
   }
+  /* filter row: neutral "All" chip, unselected chips fade back */
+  .chip-all {
+    color: var(--color-muted);
+    background: var(--color-surface);
+    border-color: var(--color-edge);
+  }
+  button.chip {
+    cursor: pointer;
+    transition: opacity 120ms cubic-bezier(0.3, 0.7, 0.3, 1);
+  }
+  .chip-off {
+    opacity: 0.6;
+  }
+  .chip-off:hover {
+    opacity: 1;
+  }
 
   /* work list — name (serif) · description (serif, muted) · chip (mono).
      The text block wraps internally; the chip is a sibling flex item so it

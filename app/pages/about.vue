@@ -12,13 +12,14 @@ useHead({
       About
     </h1>
 
-    <img
-      src="/images/pichot.jpg"
-      alt="photo of Jonathan Pichot"
-      class="mb-8 h-28 w-28 rounded-full"
-    >
-
     <div class="article">
+      <img
+        src="/images/pichot.jpg"
+        alt="Portrait of Jonathan Pichot"
+        width="724"
+        height="1086"
+        class="float-right mb-4 ml-6 mt-1.5 w-44 max-sm:w-32"
+      >
       <p>
         Hello! I'm Jonathan Pichot. I'm an urbanist, technologist, and endlessly
         curious person.
