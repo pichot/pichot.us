@@ -23,7 +23,7 @@ export const categoryChip: Record<string, string> = {
 export const categoryLabel: Record<string, string> = {
   talk: 'Talk',
   project: 'Project',
-  org: 'Org',
+  org: 'Work',
   teaching: 'Teaching',
   residency: 'Residency',
 }

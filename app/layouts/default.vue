@@ -1,13 +1,13 @@
-<script setup lang="ts">
-</script>
-
 <template>
   <div class="min-h-screen">
-    <main class="relative mx-auto w-full max-w-xl px-6 py-16 max-sm:py-10">
-      <!-- offsets = main padding minus the button's p-2, so the icon sits on the content edge -->
-      <div class="absolute right-4 top-14 max-sm:top-8">
-        <ThemeToggle />
-      </div>
+    <main class="mx-auto w-full max-w-xl px-6 py-10 max-sm:py-8">
+      <header class="mb-12 flex items-center justify-between max-sm:mb-10">
+        <NuxtLink to="/" aria-label="Jonathan Pichot, home" class="transition-opacity hover:opacity-80">
+          <LogoMark class="h-8 w-auto" />
+        </NuxtLink>
+        <!-- -mr-2 cancels the button's p-2 so the icon sits on the content edge -->
+        <ThemeToggle class="-mr-2" />
+      </header>
       <slot />
     </main>
   </div>
