@@ -34,16 +34,19 @@ function formatDate(dateStr: string) {
 </script>
 
 <template>
-  <article v-if="post" class="prose dark:prose-dark max-w-none">
-    <header class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">
-        {{ post.title }}
-      </h1>
-      <time class="text-gray-500 dark:text-gray-400">
-        {{ formatDate(post.date) }}
-      </time>
-    </header>
+  <article v-if="post">
+    <BackLink to="/writing" label="Writing" />
 
-    <ContentRenderer :value="post" />
+    <h1 class="mb-3 text-3xl font-semibold leading-snug tracking-tight text-balance">
+      {{ post.title }}
+    </h1>
+
+    <p class="mb-10 font-mono text-xs tracking-wide text-subtle">
+      {{ formatDate(post.date) }}
+    </p>
+
+    <div class="article">
+      <ContentRenderer :value="post" />
+    </div>
   </article>
 </template>

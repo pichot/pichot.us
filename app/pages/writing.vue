@@ -7,65 +7,46 @@ const { data: posts } = await useAsyncData('posts', () =>
   queryCollection('posts').order('date', 'DESC').all()
 )
 
-// Group posts by year
-const postsByYear = computed(() => {
-  if (!posts.value) return []
-
-  const grouped = posts.value.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear().toString()
-    if (!acc[year]) acc[year] = []
-    acc[year].push(post)
-    return acc
-  }, {} as Record<string, typeof posts.value>)
-
-  return Object.entries(grouped)
-    .sort(([a], [b]) => parseInt(b) - parseInt(a))
-    .map(([year, items]) => ({ year, items }))
-})
-
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
+    year: 'numeric',
+    month: 'long',
   })
-}
-
-function getPostSlug(post: { stem?: string }) {
-  // stem is like "posts/2020-03-31-back-to-basics"
-  // we need to extract year and slug
-  const filename = post.stem?.split('/').pop() || ''
-  const match = filename.match(/^(\d{4})-\d{2}-\d{2}-(.+)$/)
-  if (match) {
-    return `/${match[1]}/${match[2]}/`
-  }
-  return `/${filename}/`
 }
 </script>
 
 <template>
   <div>
-    <h1 class="text-3xl font-bold mb-8">
+    <BackLink />
+
+    <h1 class="mb-8 text-2xl font-bold leading-tight tracking-tight">
       Writing
     </h1>
 
-    <ul class="space-y-8">
-      <li v-for="group in postsByYear" :key="group.year">
-        <h2 class="text-xl font-semibold text-gray-500 dark:text-gray-400 mb-4">
-          {{ group.year }}
+    <ul class="list-none">
+      <li
+        v-for="post in posts"
+        :key="post.stem"
+        class="mb-6 border-b border-edge pb-6 last:mb-0 last:border-b-0 last:pb-0"
+      >
+        <h2 class="mb-1 font-medium leading-snug">
+          <a
+            v-if="post.externalUrl"
+            :href="post.externalUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-serif"
+          >{{ post.title }} &nearr;</a>
+          <NuxtLink v-else :to="postPath(post.stem)" class="link-serif">
+            {{ post.title }}
+          </NuxtLink>
         </h2>
-        <ul class="space-y-3">
-          <li v-for="post in group.items" :key="post.stem" class="flex items-baseline gap-4">
-            <span class="text-sm text-gray-400 dark:text-gray-500 w-16 shrink-0">
-              {{ formatDate(post.date) }}
-            </span>
-            <NuxtLink
-              :to="getPostSlug(post)"
-              class="text-blue dark:text-cyan hover:underline"
-            >
-              {{ post.title }}
-            </NuxtLink>
-          </li>
-        </ul>
+        <p v-if="post.description" class="mb-2 line-clamp-2 text-sm text-subtle">
+          {{ post.description }}
+        </p>
+        <p class="font-mono text-xs tracking-wide text-subtle">
+          {{ formatDate(post.date) }}
+        </p>
       </li>
     </ul>
   </div>

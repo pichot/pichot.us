@@ -9,102 +9,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Grays from Jekyll theme
-        gray: {
-          100: '#f9f9f9',
-          200: '#e5e5e5',
-          300: '#ccc',
-          400: '#9a9a9a',
-          500: '#767676',
-          600: '#515151',
-          700: '#313131',
-          800: '#303030',
+        // All colors are CSS custom properties so light/dark mode swap in
+        // one place (main.css) and utilities work in both modes.
+        canvas: 'var(--color-canvas)',
+        surface: 'var(--color-surface)',
+        ink: 'var(--color-ink)',
+        muted: 'var(--color-muted)',
+        subtle: 'var(--color-subtle)',
+        edge: {
+          DEFAULT: 'var(--color-edge)',
+          strong: 'var(--color-edge-strong)',
         },
-        // Accent colors
-        red: '#ac4142',
-        orange: '#d28445',
-        yellow: '#f4bf75',
-        green: '#90a959',
-        cyan: '#75b5aa',
-        blue: {
-          DEFAULT: '#268bd2',
-          logo: '#0f5086',
+        figure: {
+          DEFAULT: 'var(--color-figure)',
+          hover: 'var(--color-figure-hover)',
         },
-        pink: {
-          logo: '#de2b5d',
-        },
-        brown: '#8f5536',
-        code: '#bf616a',
       },
       fontFamily: {
-        sans: [
-          '-apple-system',
-          'BlinkMacSystemFont',
-          'Segoe UI',
-          'Roboto',
-          'Helvetica Neue',
-          'Arial',
-          'Noto Sans',
-          'sans-serif',
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-          'Segoe UI Symbol',
-          'Noto Color Emoji',
-        ],
-        mono: [
-          'SFMono-Regular',
-          'Menlo',
-          'Monaco',
-          'Consolas',
-          'Liberation Mono',
-          'Courier New',
-          'monospace',
-        ],
-        logo: ['OpticianSans', 'sans-serif'],
-      },
-      fontSize: {
-        base: '16px',
-        lg: '20px',
-      },
-      lineHeight: {
-        normal: '1.5',
-      },
-      screens: {
-        lg: '38em',
-      },
-      typography: {
-        DEFAULT: {
-          css: {
-            color: '#515151',
-            a: {
-              color: '#268bd2',
-              '&:hover': {
-                textDecoration: 'underline',
-              },
-            },
-            code: {
-              color: '#bf616a',
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: '#e5e5e5',
-            a: {
-              color: '#75b5aa',
-            },
-            h1: { color: '#f9f9f9' },
-            h2: { color: '#f9f9f9' },
-            h3: { color: '#f9f9f9' },
-            h4: { color: '#f9f9f9' },
-            strong: { color: '#f9f9f9' },
-            code: { color: '#f4bf75' },
-          },
-        },
+        serif: ['Spectral', 'Georgia', 'Times New Roman', 'serif'],
+        mono: ['IBM Plex Mono', 'ui-monospace', 'SF Mono', 'Menlo', 'monospace'],
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
 } satisfies Config
