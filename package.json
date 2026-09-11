@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "deploy": "nuxt build && wrangler deploy",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -23,6 +24,7 @@
     "@nuxtjs/color-mode": "^4.0.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.7"
+    "vue-tsc": "^3.3.7",
+    "wrangler": "^4.131.0"
   }
 }

@@ -24,3 +24,5 @@ logs
 !.env.example
 
 pnpm-lock.yaml
+# Wrangler local state and generated deploy config
+.wrangler

@@ -9,11 +9,16 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
   devtools: { enabled: true },
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2025-05-15',
 
   // Cloudflare Workers deployment
   nitro: {
-    preset: 'cloudflare-pages',
+    preset: 'cloudflare_module',
+    cloudflare: {
+      // Generate the deploy config from wrangler.jsonc + build output
+      deployConfig: true,
+      nodeCompat: true,
+    },
   },
 
   // Global CSS
