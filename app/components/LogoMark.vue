@@ -1,4 +1,4 @@
-<!-- JP mark: Optician Sans outlines (the old site's logo font) over a copper bar.
+<!-- JP mark: Optician Sans outlines (the old site's logo font) over a bronze bar.
      Colors come from --color-mark / --color-mark-bar so it follows light/dark. -->
 <template>
   <svg

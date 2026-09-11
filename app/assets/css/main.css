@@ -21,9 +21,9 @@
   --color-figure: #9a661f;
   --color-figure-hover: #855818;
 
-  /* JP mark — petrol letters over a copper bar */
-  --color-mark: #174c63;
-  --color-mark-bar: #a85a14;
+  /* JP mark — ink-blue letters over a bronze bar */
+  --color-mark: #1b3f5e;
+  --color-mark-bar: #9a5b12;
 
   /* category chips */
   --color-talk: #50707e;
@@ -54,8 +54,8 @@
   --color-figure: #cb9a4f;
   --color-figure-hover: #ddab5f;
 
-  --color-mark: #5b9bb8;
-  --color-mark-bar: #d4893a;
+  --color-mark: #6a9fc4;
+  --color-mark-bar: #c98a35;
 
   --color-talk: #7c9aa8;
   --color-talk-tint: #16222a;

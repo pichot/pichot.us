@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="35 -675 1060 1060">
   <style>
-    .jp-letters { fill: #174c63; }
-    .jp-bar { fill: #a85a14; }
+    .jp-letters { fill: #1b3f5e; }
+    .jp-bar { fill: #9a5b12; }
     @media (prefers-color-scheme: dark) {
-      .jp-letters { fill: #5b9bb8; }
-      .jp-bar { fill: #d4893a; }
+      .jp-letters { fill: #6a9fc4; }
+      .jp-bar { fill: #c98a35; }
     }
   </style>
   <g transform="scale(1 -1)">
